@@ -1,0 +1,83 @@
+.signUp_banner__contents {
+  position: absolute;
+  color: white;
+  padding-top: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  width: 100%;
+}
+.bannerSignup_title {
+  font-size: 3rem;
+  width: 1000px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.signup_btn_banner {
+  margin-bottom: 50px;
+  background: white;
+  color: black;
+  border: none;
+}
+.btn {
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+.btn:hover {
+  color: white;
+  background: #007acc;
+}
+.banner_paragra {
+  font-size: 1rem;
+  font-weight: 300;
+}
+.bottom_banner {
+  background: #121212;
+  color: white;
+  height: 40vh;
+  text-align: center;
+}
+.bottomBannerTitle {
+  font-size: 2.5rem;
+  padding-top: 40px;
+  padding-bottom: 15px;
+  font-weight: 600;
+}
+.banner_bottom_para {
+  width: 800px;
+  margin: auto;
+  color: rgba(255, 255, 255, 0.651);
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+.bottom_btn {
+  background: transparent;
+  color: white;
+  border: white solid 1px;
+}
+
+.overlaybanner2 {
+  transform: rotateX(180deg);
+}
+
+.overlaybanner,
+.overlaybanner2 {
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(22, 22, 22, 0.61),
+    #111
+  );
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  opacity: 0.9;
+}

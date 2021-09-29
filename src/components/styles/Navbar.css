@@ -1,0 +1,71 @@
+.navbarContainer {
+  position: fixed;
+  width: 100%;
+  height: 90px;
+  z-index: 999;
+}
+.logo {
+  object-fit: contain;
+}
+li {
+  list-style-type: none;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90vw;
+  height: 100%;
+  margin: auto;
+  border-bottom: solid gray 1px;
+}
+.nav_links {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 50px;
+}
+.nav_link {
+  margin-left: 25px;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.nav_link:hover {
+  color: #007acc;
+}
+.navblack {
+  background: black;
+  transition: 0.3s ease-in-out all;
+}
+.nav_right,
+.navleft {
+  display: flex;
+  align-items: center;
+}
+.nav_right > img {
+  padding: 0 5px;
+}
+.nav_chevron > svg {
+  color: white;
+  font-size: 28px;
+  font-weight: 300;
+}
+.searchIcon {
+  color: white;
+  font-size: 30px;
+  margin-left: 10px;
+  transition: all 0.3s ease-in-out;
+}
+.searchIcon:hover {
+  color: #007acc;
+}
+@media screen and (max-width: 1000px) {
+  .nav_links {
+    overflow-x: hidden;
+  }
+  .nav_link {
+    font-size: 1rem;
+  }
+}
