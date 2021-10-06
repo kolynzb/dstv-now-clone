@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./styles/SignInScreen.css";
 import { useDispatch } from "react-redux";
 import { login } from "../store/userSlice";
 import { Link } from "react-router-dom";
+import { auth } from "../Firebase";
 const SignInScreen = () => {
   return (
     <div className="SignInScreen">
@@ -26,18 +27,35 @@ const SignInScreen = () => {
 
 const SignIn = () => {
   const dispatch = useDispatch();
+  const userEmail = useRef(null);
+  const userPassword = useRef(null);
+  const register = () => {
+    auth
+      .createUserWithEmailAndPassword(
+        userEmail.current.value,
+        userPassword.current.value
+      )
+      .then((user) => dispatch(login(user)))
+      .catch((err) => console.log(err.message));
+  };
   return (
     <form className="signInForm">
       <h1 className="signinTitle">Sign In</h1>
       <div className="emailInputSignIn inputt">
-        <input type="email" placeholder="Email or mobile number" />
+        <input
+          ref={userEmail}
+          type="email"
+          placeholder="Email or mobile number"
+        />
       </div>
       <div className="passwordInputSignIn inputt">
-        <input type="email" placeholder="Password" />
+        <input ref={userPassword} type="email" placeholder="Password" />
       </div>
-      <button className="signInBtn" onClick={() => dispatch(login())}>
-        Sign in
-      </button>
+      <Link to="/">
+        <button className="signInBtn" onClick={register}>
+          Sign in
+        </button>
+      </Link>
       <p className="signBtmPara">
         Forgot your email or password?
         <span className="signBtmParaLink">Reset</span>
@@ -52,8 +70,8 @@ const SignIn = () => {
 
 export const SignupHeader = () => {
   return (
-    <Link to="/">
-      <header className="signinHeader">
+    <header className="signinHeader">
+      <Link to="/">
         <img
           className="logoSignIn"
           src="https://now.dstv.com/static/media/logo_dstv.e9762ba5.svg"
@@ -69,8 +87,8 @@ export const SignupHeader = () => {
         >
           part of the <b>MultiChoice</b> group
         </p>
-      </header>
-    </Link>
+      </Link>
+    </header>
   );
 };
 

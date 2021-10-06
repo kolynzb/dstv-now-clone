@@ -4,10 +4,22 @@ import SignInScreen from "./screens/SignInScreen";
 import Home from "./screens/Home";
 import SignUpWelcome from "./screens/SignUpWelcome";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectUser } from "./store/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logOut, selectUser } from "./store/userSlice";
+import { auth } from "./Firebase";
+import { useEffect } from "react";
 function App() {
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const subscribe = auth.onAuthStateChanged((user) => {
+      user
+        ? dispatch(login({ uID: user.uid, email: user.email }))
+        : dispatch(logOut);
+    });
+    return subscribe;
+  }, [dispatch]);
   return (
     <div className="App">
       <Router>

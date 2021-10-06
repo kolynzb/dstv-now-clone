@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { selectUser } from "../store/userSlice";
+import { Link } from "react-router-dom";
+import { logOut, selectUser } from "../store/userSlice";
 import "./styles/Navbar.css";
 const Navbar = () => {
   const [showNav, setshowNav] = useState(false);
@@ -12,6 +13,7 @@ const Navbar = () => {
     });
   }, []);
   let history = useHistory();
+  const dispatch = useDispatch();
   return (
     <div className={`navbarContainer  ${showNav && "navblack"}`}>
       <nav>
@@ -44,7 +46,7 @@ const Navbar = () => {
               width="25px"
               className="nav_avator"
             />
-            <div className="nav_chevron">
+            <div className="nav_chevron" onClick={() => dispatch(logOut())}>
               <svg
                 stroke="currentColor"
                 fill="currentColor"
@@ -75,12 +77,9 @@ const Navbar = () => {
             </svg>
           </div>
         ) : (
-          <button
-            className="bottom_btn btn"
-            onclick={() => history.push("/SignInScreen")}
-          >
-            Sign in
-          </button>
+          <Link to="/SignInScreen">
+            <button className="bottom_btn btn">Sign in</button>
+          </Link>
         )}
       </nav>
     </div>
@@ -88,6 +87,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-{
-  /* */
-}

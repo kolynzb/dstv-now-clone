@@ -44,3 +44,13 @@
 .footer_bottom_link:hover {
   color: #59adeb;
 }
+@media screen and (max-width: 950px) {
+  .footer-top {
+    height: 20vh;
+  }
+  .footer-top,
+  .footer_right {
+    flex-direction: column;
+    text-align: center;
+  }
+}
